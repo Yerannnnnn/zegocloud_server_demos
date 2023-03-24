@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Setting Environment Variables
+Before running this demo, you need to set the following environment variables in `.env.local` file:
+
+```
+ZEGOCLOUD_APP_ID=
+ZEGOCLOUD_SERVER_SECRET=
+ZEGOCLOUD_APP_SIGN=
+REDIS_HOST=
+REDIS_PORT=
+REDIS_USER=
+REDIS_PSWD=
+```
 ## Getting Started
 
 First, run the development server:
