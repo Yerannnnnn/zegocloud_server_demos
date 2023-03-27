@@ -1232,6 +1232,6 @@ So far, you have completed a basic room list service.
 
 ZEGOCLOUD provides you with a rich set of server APIs, such as `Room signaling API`, `Streaming control API`, etc., as well as various event callbacks. You can use them to further extend your room services. Please refer to [Server APIs](https://docs.zegocloud.com/article/9780) and [Callback](https://docs.zegocloud.com/article/9804) for more information.
 
-You can read this doc to learn how to extend your room list server capabilities using the features provided by ZEGOCLOUD: [待补充文档名及链接]
+You can read this doc to learn how to extend your room list server capabilities using the features provided by ZEGOCLOUD: [TODO]
 
 If you have any suggestions or comments, feel free to share them with us via [Discord\|_blank](https://discord.gg/EtNRATttyp). We value your feedback.
