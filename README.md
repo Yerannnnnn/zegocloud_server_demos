@@ -59,8 +59,7 @@ During application development, it is often necessary for you to implement a roo
 - You need to show an entrance list for app users, allowing them to select the units they are interested in and join the room for interaction.
 - After app users join the room, you need to show them the detailed information of the room and provide special features for different roles. For example, the host can start live streaming and the audience can send virtual gifts.
 
-<img src="http://doc.oa.zego.im/Pics/zegocloud/live/roomList.jpg" width=40%>
-
+<img src="https://storage.zego.im/sdk-doc/Pics/zegocloud/live/roomList.jpg" width=40%>
 
 Considering the different business scopes and requirements, we set that you need to maintain your own room/channel data on the server-side and implement features such as data pulling, display, and timely refreshing on the client-side.
 
