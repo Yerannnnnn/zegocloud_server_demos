@@ -100,9 +100,6 @@ This doc will guide you through implementing the following APIs related to the r
 In order to give you a general understanding of the workflow, the following diagram describes the business process of the "host creating a live stream, audience joining the live stream, host ending the live stream, audience leaving the live stream" in a live streaming scenario. Of course, this process also applies to other scenarios, such as a conference list, game room list, etc.
 
 
-![](https://mermaid.ink/img/pako:eNqdVMluwjAQ_ZWRzyDuOSBVFBVV7aW5VZGQSSbg1rFTL0gI8e8dxwlBIaLQXOLlzbw3i-fIcl0gS5jFH48qx2fBt4ZXmQL6am6cyEXNlYOVtu76NEWzR3N9_uQLEdxlKt4F6-l8HuEJLAxyh8BBij2CdbStwGhdAczCb5Y3gHVYRwfRcko-gqsEUp_naG3ppTxARBejVK9aqDGiyPNFt_eyBGxHIrWuYaGVE8prb2GHFPyGVMTrER0pqqKHtfQjZkMJq7OJQVtrZTFiyV1Ibtx06b7ge0EHbocUuHWgy6sE2FbCFl2TgHUADrPQ-U3gA5036rbHm3r-WYdewWgtHkhAhdUGjQURo7ggP6fAWzSP52HEcSdr0CYk3FLdhNr2nWD70o8E8XjX9FLv6pxBly6JLsY2_i7J9u5HKbX9o0RvyInmFp8MiEcaQ2Lp2IRVaCouChpsx2CYMSKpMGMJLQtuvjOWqRPhuHc6PaicJc54nDBfFzRJ2iHIkpJLez5dFsJp0yGx2b3H6dkM0Qmj0fdJUlu70y8gvtrw?type=png)
-
-<div hidden="hidden>
 
 ```mermaid
 sequenceDiagram
@@ -144,8 +141,6 @@ sequenceDiagram
     Audience->>Server: Leave the live stream room  /room/leave_room
     Server-->>Audience: Successfully left
 ```
-
-</div>
 
 The common room list service requires the following information to be processed:
 - Room list and room info: room ID, room name, special role IDs in the room (e.g. host, teacher, etc.), and other room business info (such as room type, etc.).
