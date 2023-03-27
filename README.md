@@ -209,7 +209,7 @@ The common room list service requires the following information to be processed:
 
 For better understanding, this article will provide two types of sample code:
 
-1. One way is to let the server directly use memory to manage data. This method can help you better understand the server's business logic.
+1. One way is to let the server directly use memory to manage data. This method can help you better understand the server's business logic. However, please note that the data in memory will be lost after the server restarts, so it is not recommended to use this method.
 2. Another way is to take Redis as an example and explain how to use a cache database or other databases (such as SQLServer, Firebase-DataBase, etc.) to implement a standard room list service.
 
 > The sample code in this article uses live streaming scenarios as an example but is also applicable to other scenarios, such as conference lists, game room lists, etc.
@@ -221,7 +221,7 @@ In a room list service, the lifecycle of a room object begins with `creating a r
 <details class="zg-primary">
     <summary>1. Use memory or database services to manage data </summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```js
 // Declare variables directly in memory to manage data
@@ -252,7 +252,7 @@ const delAsync = promisify(client.del).bind(client);
 <details class="zg-primary">
     <summary>2. When the client calls the create room API, the server performs necessary error checks and updates the data - creating and saving a room object, recording the room ID, room name, room creator, and other information. </summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```js
 async function _createRoom(RoomID, RoomName, HostID) {
@@ -328,7 +328,7 @@ async function _createRoom(RoomID, RoomName, HostID) {
 <details class="zg-primary">
     <summary>3. When the client calls the end room API, necessary error checks are performed and data is updated - the corresponding room object is found and deleted. </summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -407,7 +407,7 @@ Notes:
 
 > In the reference code, to reduce the length of the response body, only necessary info such as room ID, room name, and host name is returned. You can add other necessary info as needed, such as the URL of the room cover image and the room description.
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -485,7 +485,7 @@ The lifecycle of the room user object in the server data usually starts with `jo
 <details class="zg-primary">
     <summary>1. When a user joins a room, first retrieve the room object from the database, and then add the user info to the member list of the room.</summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -592,7 +592,7 @@ async function _joinRoom(RoomID, UserID, UserName) {
 <details class="zg-primary">
     <summary>2. When a user leaves a room, delete the user from the member list of the room.</summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -690,7 +690,7 @@ Notes:
 <details class="zg-primary">
     <summary>The reference code for the demo is as follows:</summary>
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -773,7 +773,7 @@ In our sample demo, the user list in the room will be further maintained based o
 > At the same time, the server will inform the client whether it is still in a normal connection. If the client has disconnected abnormally, the client usually needs to handle the business logic such as relogin.
 
 
-- Using Memory
+- Using Memory (Not recommended)
 
 
 ```js
@@ -884,7 +884,7 @@ async function _heartbeat(RoomID, UserID) {
 
 > When the removed client initiates a heartbeat request again, the server will inform the client that a heartbeat timeout has occurred.
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```js
 setInterval(() => {
@@ -989,7 +989,7 @@ User heartbeat is an indispensable mechanism in app development, which can help 
 
 - Creating rooms
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/create_room?RoomID=room1&RoomName=room1&HostID=host
@@ -1018,7 +1018,7 @@ http://[your.server.domain]/api/room/mem/create_room?RoomID=room1&RoomName=room1
 
 - Ending rooms
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/end_room?RoomID=room1
@@ -1047,7 +1047,7 @@ http://[your.server.domain]/api/room/mem/end_room?RoomID=room1
 
 - Getting room list
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/get_room_list
@@ -1083,7 +1083,7 @@ http://[your.server.domain]/api/room/mem/get_room_list
 
 - Joining rooms
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/join_room?RoomID=room1&UserID=user2&UserName=user2
@@ -1112,7 +1112,7 @@ http://[your.server.domain]/api/room/mem/join_room?RoomID=room1&UserID=user2&Use
 
 - Leaving rooms
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/leave_room?RoomID=room1&UserID=user2
@@ -1144,7 +1144,7 @@ http://[your.server.domain]/api/room/mem/leave_room?RoomID=room1&UserID=user2
 
 - Getting user list
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/get_room_user_list?RoomID=room1
@@ -1185,7 +1185,7 @@ http://[your.server.domain]/api/room/mem/get_room_user_list?RoomID=room1
 
 - User heartbeat 
 
-- Using Memory
+- Using Memory (Not recommended)
 
 ```
 http://[your.server.domain]/api/room/redis/heartbeat?RoomID=room1&UserID=user2
