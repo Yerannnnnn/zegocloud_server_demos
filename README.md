@@ -215,23 +215,14 @@ In a room list service, the lifecycle of a room object begins with `creating a r
 <details class="zg-primary">
     <summary>1. Use memory or database services to manage data </summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```js
 // Declare variables directly in memory to manage data
 const _roomList = {};
 ```
+
+- Using Redis
 
 ```js
 // Use a cache database like Redis or other databases (such as SQLServer, Firebase-DataBase, etc.) to manage data
@@ -255,18 +246,7 @@ const delAsync = promisify(client.del).bind(client);
 <details class="zg-primary">
     <summary>2. When the client calls the create room API, the server performs necessary error checks and updates the data - creating and saving a room object, recording the room ID, room name, room creator, and other information. </summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```js
 async function _createRoom(RoomID, RoomName, HostID) {
@@ -297,6 +277,8 @@ async function _createRoom(RoomID, RoomName, HostID) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _createRoom(RoomID, RoomName, HostID) {
@@ -340,18 +322,7 @@ async function _createRoom(RoomID, RoomName, HostID) {
 <details class="zg-primary">
     <summary>3. When the client calls the end room API, necessary error checks are performed and data is updated - the corresponding room object is found and deleted. </summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -378,6 +349,8 @@ async function _endRoom(RoomID) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _endRoom(RoomID) {
@@ -428,18 +401,7 @@ Notes:
 
 > In the reference code, to reduce the length of the response body, only necessary info such as room ID, room name, and host name is returned. You can add other necessary info as needed, such as the URL of the room cover image and the room description.
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -466,6 +428,8 @@ async function _getRoomList() {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 
@@ -515,18 +479,7 @@ The lifecycle of the room user object in the server data usually starts with `jo
 <details class="zg-primary">
     <summary>1. When a user joins a room, first retrieve the room object from the database, and then add the user info to the member list of the room.</summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -572,6 +525,8 @@ async function _joinRoom(RoomID, UserID, UserName) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _joinRoom(RoomID, UserID, UserName) {
@@ -631,18 +586,7 @@ async function _joinRoom(RoomID, UserID, UserName) {
 <details class="zg-primary">
     <summary>2. When a user leaves a room, delete the user from the member list of the room.</summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -678,6 +622,8 @@ async function _leaveRoom(RoomID, UserID) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _leaveRoom(RoomID, UserID) {
@@ -738,18 +684,7 @@ Notes:
 <details class="zg-primary">
     <summary>The reference code for the demo is as follows:</summary>
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -779,6 +714,8 @@ async function _getRoomUserList(RoomID) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _getRoomUserList(RoomID) {
@@ -830,18 +767,7 @@ In our sample demo, the user list in the room will be further maintained based o
 > At the same time, the server will inform the client whether it is still in a normal connection. If the client has disconnected abnormally, the client usually needs to handle the business logic such as relogin.
 
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 
 ```js
@@ -887,6 +813,8 @@ async function _heartbeat(RoomID, UserID) {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 async function _heartbeat(RoomID, UserID) {
@@ -950,18 +878,7 @@ async function _heartbeat(RoomID, UserID) {
 
 > When the removed client initiates a heartbeat request again, the server will inform the client that a heartbeat timeout has occurred.
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```js
 setInterval(() => {
@@ -1004,6 +921,8 @@ async function _checkHeartbeatTime() {
   }
 }
 ```
+
+- Using Redis
 
 ```js
 // Start user heartbeat check after connecting to Redis.
@@ -1064,22 +983,14 @@ User heartbeat is an indispensable mechanism in app development, which can help 
 
 - Creating rooms
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/create_room?RoomID=room1&RoomName=room1&HostID=host
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/create_room?RoomID=room1&RoomName=room1&HostID=host
@@ -1101,22 +1012,14 @@ http://[your.server.domain]/api/room/mem/create_room?RoomID=room1&RoomName=room1
 
 - Ending rooms
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/end_room?RoomID=room1
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/end_room?RoomID=room1
@@ -1138,22 +1041,14 @@ http://[your.server.domain]/api/room/mem/end_room?RoomID=room1
 
 - Getting room list
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/get_room_list
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/get_room_list
@@ -1182,22 +1077,14 @@ http://[your.server.domain]/api/room/mem/get_room_list
 
 - Joining rooms
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/join_room?RoomID=room1&UserID=user2&UserName=user2
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/join_room?RoomID=room1&UserID=user2&UserName=user2
@@ -1219,22 +1106,14 @@ http://[your.server.domain]/api/room/mem/join_room?RoomID=room1&UserID=user2&Use
 
 - Leaving rooms
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/leave_room?RoomID=room1&UserID=user2
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/leave_room?RoomID=room1&UserID=user2
@@ -1259,22 +1138,14 @@ http://[your.server.domain]/api/room/mem/leave_room?RoomID=room1&UserID=user2
 
 - Getting user list
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/get_room_user_list?RoomID=room1
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/get_room_user_list?RoomID=room1
@@ -1308,22 +1179,14 @@ http://[your.server.domain]/api/room/mem/get_room_user_list?RoomID=room1
 
 - User heartbeat 
 
-<div class="multiple-select-codes">
-  <div class="code-tabs hide-scrollbar">
-    <div class="scroll-box">
-      <span class="tab-item">
-        <span>Using Memory</span>
-      </span>
-      <span class="tab-item">
-        <span>Using Redis</span>
-      </span>
-    </div>
-  </div>
-  <div class="code-list">
+- Using Memory
 
 ```
 http://[your.server.domain]/api/room/redis/heartbeat?RoomID=room1&UserID=user2
 ```
+
+- Using Redis
+
 
 ```
 http://[your.server.domain]/api/room/mem/heartbeat?RoomID=room1&UserID=user2
