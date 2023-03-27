@@ -100,7 +100,7 @@ This doc will guide you through implementing the following APIs related to the r
 In order to give you a general understanding of the workflow, the following diagram describes the business process of the "host creating a live stream, audience joining the live stream, host ending the live stream, audience leaving the live stream" in a live streaming scenario. Of course, this process also applies to other scenarios, such as a conference list, game room list, etc.
 
 
-![](https://mermaid.ink/img/pako:eNqVVE1rwjAY_islZ8V7D8Jgh1128jYKkrXvtFvbdDEVhgjKkIlsc24yB8I-DoNdPCkIevDXxI9_sbSx6qzU2VOSPh8875u8JaQTA5CKCnDtgaPDsYlzFNuao4jPxZSZuulihyknpMCipxmgRaDR8yPPMH05zZH_fHYynZZwVeH1Lh-PZt3B9Lm36AyUFCXETukUMIOsv5YsCU8Kos8PadP6E2987NZtfPLa97buJTGdONWAtKlqEeIq0_vqbNzjk9v5sC-Pdxk2W4tKVYKWbnkQdTgXSdakiGOA5y8PfNSWKHAMv1RyExZvw2f-OOTN11UwXu_Mv36WhjlgQbqsZYYtWhuGWkJi0ubd9y2JGMsDa7k2-lvPvaGm9YmQ9-Gtt925vALQf4WLSoXuMR3dFf3Arm5kj-_s9u2p9Red3naJBSPutgacf1R3Uanwu8gbswAXYU8DJVNaoASygdrYNMSQKPkcDbE82KAhVSwNTK80pDllgcMeI5kbR0cqox4kkOca4jkvBwpSL7BVEKdiPJwJ99UeDJMReiqnUDCMyr8fJvFZ?type=png)
+![](https://mermaid.ink/img/pako:eNqdVMluwjAQ_ZWRzyDuOSBVFBVV7aW5VZGQSSbg1rFTL0gI8e8dxwlBIaLQXOLlzbw3i-fIcl0gS5jFH48qx2fBt4ZXmQL6am6cyEXNlYOVtu76NEWzR3N9_uQLEdxlKt4F6-l8HuEJLAxyh8BBij2CdbStwGhdAczCb5Y3gHVYRwfRcko-gqsEUp_naG3ppTxARBejVK9aqDGiyPNFt_eyBGxHIrWuYaGVE8prb2GHFPyGVMTrER0pqqKHtfQjZkMJq7OJQVtrZTFiyV1Ibtx06b7ge0EHbocUuHWgy6sE2FbCFl2TgHUADrPQ-U3gA5036rbHm3r-WYdewWgtHkhAhdUGjQURo7ggP6fAWzSP52HEcSdr0CYk3FLdhNr2nWD70o8E8XjX9FLv6pxBly6JLsY2_i7J9u5HKbX9o0RvyInmFp8MiEcaQ2Lp2IRVaCouChpsx2CYMSKpMGMJLQtuvjOWqRPhuHc6PaicJc54nDBfFzRJ2iHIkpJLez5dFsJp0yGx2b3H6dkM0Qmj0fdJUlu70y8gvtrw?type=png)
 
 <div hidden="hidden>
 
@@ -114,7 +114,7 @@ sequenceDiagram
     Server-->>Host: Successfully created
     Host->>Server: Join a live stream room /room/join_room
     Server-->>Host: Successfully joined
-    loop 持续心跳
+    loop Continuous heartbeat
         Host->>Server: Send heartbeat /room/heartbeat
         Server-->>Host: Heartbeat response
     end
