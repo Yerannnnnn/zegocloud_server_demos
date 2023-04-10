@@ -1,4 +1,8 @@
 
+# This article is for teaching purposes only, and ZEGOCLOUD does not provide any maintenance and technical support for it.
+
+
+
 <details class="zg-primary">
     <summary> How To Run This Demo</summary>
 
